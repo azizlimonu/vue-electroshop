@@ -49,7 +49,94 @@
       <div :class="['overlay', isModalVisible ? 'show' : '']" @click="toggleCart"></div>
 
       <div :class="['purchase', 'd-flex', 'flex-column', isModalVisible ? 'show' : '']">
-        Alhamdulillah Ya Rabb
+        <div class="heading">
+          <div class="home-cart-img">
+            <router-link @click="toggleCart()" to="/">
+              <img src="../../../assets/logo.webp" alt="Logo" />
+            </router-link>
+          </div>
+          <div class="close-cart" @click="toggleCart()">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+
+        <div class="products" v-if="homeCart.length > 0">
+          <div class="item" v-for="(product, i) in homeCart" :key="product.id">
+            <div class="product-img">
+              <a @click="navigateToProduct()">
+                <img :src="product.firstImg" :alt="product.title" />
+              </a>
+            </div>
+
+            <div class="product-text">
+              <a @click="navigateToProduct()">
+                {{ product.description }}
+              </a>
+              <p class="total">
+                {{ product.count }} X
+                {{
+                  `Rp. ${Math.floor(
+                    product.price - (product.price * product.discount) / 100
+                  )}`
+                }}
+              </p>
+            </div>
+
+            <div class="delete">
+              <button @click="deleteItem(i)">
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty-cart" v-else>
+          <h2>Your Cart is Empty</h2>
+          <div class="continue-link">
+            <router-link to="/catalog" @click="toggleCart()">
+              Continue Shopping
+            </router-link>
+          </div>
+        </div>
+
+        <div class="cart-footer">
+          <div class="total text-center">
+            <span class="sub m-2">
+              Subtotal
+            </span>
+            <span class="total-num">
+              {{ totalPrice }}
+            </span>
+          </div>
+          <div class="taxes text-center">
+            Note: Taxes and shipping calculated at checkout
+          </div>
+          <div>
+            <router-link @click="toggleCart()" class="view-cart" to="/my-cart">
+              VIEW MY CART ({{ store.state.cartTotal }})
+            </router-link>
+          </div>
+          <div>
+            <router-link @click="toggleCart()" class="pay" to="/profile-page">
+              CHECKOUT
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div :class="['hidden-search', isSearchOpen ? 'show-search' : '']" ref="hiddenSearch">
+      <div class="container">
+        <div class="search-content">
+          <form>
+            <div class="form-floating">
+              <input class="form-control" type="search" placeholder=" " required />
+              <label>Search</label>
+            </div>
+          </form>
+          <button @click="toggleSearch()" class="close-search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -61,12 +148,11 @@ import { useStore } from 'vuex';
 import { useRoute } from 'vue-router'
 const location = useRoute();
 
-const isCartOpen = ref(false);
-const isSearchOpen = ref(false);
 const homeCart = ref([]);
 const store = useStore();
 const windowWidth = ref(window.innerWidth);
 const isModalVisible = ref(false);
+const isSearchOpen = ref(false);
 
 console.log("State => ", store.state);
 
@@ -125,6 +211,18 @@ const deleteItem = (i) => {
     setCartCountToLS();
     store.commit('totalCart');
   }
+};
+
+// navigate to product page
+const navigateToProduct = () => {
+  router.push({
+    name: 'product',
+    params: {
+      id: product.value.id,
+      description: product.value.description,
+    },
+  });
+  toggleCart();
 };
 
 onMounted(() => {
