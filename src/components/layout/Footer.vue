@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>OKE GAS OKE GAS TAMBAH 2 TORANG GAS</p>
+    Footer
   </div>
 </template>
 
