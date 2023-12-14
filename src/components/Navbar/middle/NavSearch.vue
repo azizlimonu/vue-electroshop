@@ -1,6 +1,6 @@
 <template>
   <div>
-    Loading is true now
+    Search
   </div>
 </template>
 
