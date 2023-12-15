@@ -1,19 +1,13 @@
 <template>
-  <!-- Navbar -->
   <NavbarView />
 
-  <!-- Main Container -->
   <div class="main container d-flex">
-    <!-- Router View -->
-    <router-view></router-view>
+    <router-view @beforeRouteUpdate="startLoading" />
   </div>
-  <!-- Main Container End -->
 
   <FooterView />
 
-  <!-- Loading Overlay -->
   <LoadingOverlay v-if="isLoading" />
-  <!-- Scroll To Top -->
   <ScrollToTop />
 </template>
 

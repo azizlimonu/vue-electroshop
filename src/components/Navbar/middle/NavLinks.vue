@@ -154,11 +154,11 @@ const windowWidth = ref(window.innerWidth);
 const isModalVisible = ref(false);
 const isSearchOpen = ref(false);
 
-console.log("State => ", store.state);
+// console.log("State => ", store.state);
 
 // Custom nextTick function to capture refs
 const refs = ref({});
-console.log(refs);
+// console.log(refs);
 const customNextTick = (callback) => {
   refs.value = {
     ...refs.value,
