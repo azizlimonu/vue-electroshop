@@ -6,7 +6,7 @@ import router from './router';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "./scss/style.css";
+import './scss/style.scss';
 import "animate.css";
 
 createApp(App).use(store).use(router).mount('#app')

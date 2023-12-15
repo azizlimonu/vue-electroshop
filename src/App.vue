@@ -37,7 +37,7 @@ onMounted(() => {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #app {
   position: relative;
   background-color: #f5f5f5;

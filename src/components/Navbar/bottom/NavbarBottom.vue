@@ -2,6 +2,12 @@
   <div class="navbar-bottom">
     <div class="container">
       <div class="pages-links">
+        <div class="menu">
+          <button class="open-menu flex-center" @click="toggleMenu()">
+            <i class="fa-sharp fa-solid fa-bars"></i>
+          </button>
+        </div>
+
         <div class="links">
           <ul class="home-ul">
             <li><router-link to="/">HOME</router-link></li>
@@ -9,7 +15,85 @@
             <li><router-link to="/contact">CONTACT</router-link></li>
             <li><router-link to="/blog">BLOG</router-link></li>
             <li><router-link to="/my-cart">CART</router-link></li>
+            <li>
+              <router-link to="/compare" class="hide-link">
+                COMPARE
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/wishlist" class="hide-link">
+                WISHLIST
+              </router-link>
+            </li>
           </ul>
+
+          <!-- responsive menu -->
+          <div class="menu-links">
+            <!-- Bind class overlay with add show -->
+            <div :class="['overlay', isMenuOpen ? 'show' : '']" @click=" toggleMenu()"></div>
+
+            <div :class="['home-links', 'd-flex', 'flex-column', isMenuOpen ? 'show' : '']">
+              <ul style="flex: 1">
+                <div class="header">
+                  <div class="img">
+                    <img src="../../../assets/logo.webp" alt="Logo!" />
+                  </div>
+                  <span class="close-menu" @click="toggleMenu()">
+                    <i class="fa-solid fa-xmark"></i>
+                  </span>
+                </div>
+                <li>
+                  <router-link @click="toggleMenu()" to="/">
+                    HOME
+                  </router-link>
+                </li>
+                <li>
+                  <router-link @click="toggleMenu()" to="/catalog">
+                    CATALOG
+                  </router-link>
+                </li>
+                <li>
+                  <router-link @click="toggleMenu()" to="/contact">
+                    CONTACT
+                  </router-link>
+                </li>
+                <li>
+                  <router-link @click="toggleMenu()" to="/blog">
+                    BLOG
+                  </router-link>
+                </li>
+                <li>
+                  <router-link @click="toggleMenu()" to="/my-cart">
+                    CART ({{ store.state.cartTotal }})
+                  </router-link>
+                </li>
+                <li>
+                  <router-link @click="toggleMenu()" to="/compare" class="hide-link">
+                    COMPARE ({{ store.state.compareTotal }})
+                  </router-link>
+                </li>
+                <li>
+                  <router-link @click="toggleMenu()" to="/wishlist" class="hide-link">
+                    WISHLIST ({{ store.state.favTotal }})
+                  </router-link>
+                </li>
+              </ul>
+              <div class="contact-me" style="background-color: #223040; color: white">
+                <a href="https://www.facebook.com" target="_blank">
+                  <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://github.com" target="_blank">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="/" target="_blank">
+                  <i class="fa-solid fa-link"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
         <router-link to="/contact" class="need-help">
           Need Help? (+62) 812-3456-7890
@@ -20,6 +104,19 @@
 </template>
 
 <script setup>
+import { useStore } from 'vuex';
+import { useRoute } from 'vue-router';
+import { ref } from 'vue';
+
+const isMenuOpen = ref(false);
+
+const location = useRoute();
+const store = useStore();
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -40,6 +137,7 @@
       display: flex;
       justify-content: flex-end;
       padding: 10px 16px;
+      width: 100%;
       margin-left: auto;
 
       @media (max-width: 1199px) {
@@ -50,6 +148,20 @@
       @media (max-width: 767px) {
         width: 100%;
         padding: 10px 14px;
+      }
+
+      .menu {
+        font-size: 19px;
+        color: white;
+
+        @media (min-width: 991px) {
+          display: none;
+        }
+
+        @media (max-width: 991px) {
+          flex: 1;
+          justify-content: start;
+        }
       }
 
       .links {
@@ -197,7 +309,8 @@
         }
       }
 
-      .need-help {
+      .need-help,
+      .open-menu {
         background-color: transparent;
         border: none;
         outline: none;
