@@ -1,36 +1,40 @@
 <template>
-  <button class="scroll-top" :class="{ show: showGoTopButton, hide: !showGoTopButton }" @click="scrollToTop">
+  <button
+    class="scroll-top"
+    :class="{ show: showGoTopButton, hide: !showGoTopButton }"
+    @click="scrollToTop"
+  >
     <i class="fa-solid fa-chevron-up"></i>
   </button>
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-const showGoTopButton = ref(false);
+const showGoTopButton = ref(false)
 
 const handleScroll = () => {
   if (window.pageYOffset > 700) {
-    showGoTopButton.value = true;
+    showGoTopButton.value = true
   } else {
-    showGoTopButton.value = false;
+    showGoTopButton.value = false
   }
-};
+}
 
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
-  });
-};
+  })
+}
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-});
+  window.addEventListener('scroll', handleScroll)
+})
 
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll);
-});
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style lang="scss" scoped>

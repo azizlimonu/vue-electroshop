@@ -9,34 +9,34 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import NavbarLinks from './NavLinks.vue';
-import NavbarSearch from './NavSearch.vue';
-import NavbarLogo from './NavLogo.vue';
+import { ref, onMounted, onUnmounted } from 'vue'
+import NavbarLinks from './NavLinks.vue'
+import NavbarSearch from './NavSearch.vue'
+import NavbarLogo from './NavLogo.vue'
 
-const navHeight = ref(null);
-const isFixed = ref(false);
+const navHeight = ref(null)
+const isFixed = ref(false)
 
 onMounted(() => {
-  navHeight.value = document.querySelector('.navbar-middle').offsetHeight;
+  navHeight.value = document.querySelector('.navbar-middle').offsetHeight
 
   const handleScroll = () => {
-    const scrolled = window.scrollY;
-    const navbarMiddle = document.querySelector('.navbar-middle');
+    const scrolled = window.scrollY
+    const navbarMiddle = document.querySelector('.navbar-middle')
 
     if (scrolled > navHeight.value) {
-      navbarMiddle.classList.add('fixed');
+      navbarMiddle.classList.add('fixed')
     } else {
-      navbarMiddle.classList.remove('fixed');
+      navbarMiddle.classList.remove('fixed')
     }
-  };
+  }
 
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll)
 
   onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
-  });
-});
+    window.removeEventListener('scroll', handleScroll)
+  })
+})
 </script>
 
 <style lang="scss" scoped>
@@ -45,7 +45,7 @@ onMounted(() => {
   border-bottom: 1px solid #344456;
   position: relative;
 
-  >.container {
+  > .container {
     padding: 22px 12px;
     align-items: center;
 

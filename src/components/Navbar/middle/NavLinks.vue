@@ -1,6 +1,5 @@
 <template>
   <div class="links">
-
     <div class="search" @click="toggleSearch" ref="search">
       <i class="fa-solid fa-magnifying-glass open-search"></i>
       <span class="open-search">Search</span>
@@ -35,7 +34,11 @@
       <span>Compare</span>
     </div>
 
-    <div class="cart" @click="location.path === '/my-cart' ? false : toggleCart()" ref="myCart">
+    <div
+      class="cart"
+      @click="location.path === '/my-cart' ? false : toggleCart()"
+      ref="myCart"
+    >
       <i class="fa-solid fa-cart-shopping">
         <span class="cart-num purchase-num">
           {{ store.state.cartTotal }}
@@ -46,9 +49,19 @@
 
     <!-- Side Cart When Its Toggled -->
     <div class="home-cart">
-      <div :class="['overlay', isModalVisible ? 'show' : '']" @click="toggleCart"></div>
+      <div
+        :class="['overlay', isModalVisible ? 'show' : '']"
+        @click="toggleCart"
+      ></div>
 
-      <div :class="['purchase', 'd-flex', 'flex-column', isModalVisible ? 'show' : '']">
+      <div
+        :class="[
+          'purchase',
+          'd-flex',
+          'flex-column',
+          isModalVisible ? 'show' : '',
+        ]"
+      >
         <div class="heading">
           <div class="home-cart-img">
             <router-link @click="toggleCart()" to="/">
@@ -76,7 +89,7 @@
                 {{ product.count }} X
                 {{
                   `Rp. ${Math.floor(
-                    product.price - (product.price * product.discount) / 100
+                    product.price - (product.price * product.discount) / 100,
                   )}`
                 }}
               </p>
@@ -100,9 +113,7 @@
 
         <div class="cart-footer">
           <div class="total text-center">
-            <span class="sub m-2">
-              Subtotal
-            </span>
+            <span class="sub m-2"> Subtotal </span>
             <span class="total-num">
               {{ totalPrice }}
             </span>
@@ -124,12 +135,20 @@
       </div>
     </div>
 
-    <div :class="['hidden-search', isSearchOpen ? 'show-search' : '']" ref="hiddenSearch">
+    <div
+      :class="['hidden-search', isSearchOpen ? 'show-search' : '']"
+      ref="hiddenSearch"
+    >
       <div class="container">
         <div class="search-content">
           <form>
             <div class="form-floating">
-              <input class="form-control" type="search" placeholder=" " required />
+              <input
+                class="form-control"
+                type="search"
+                placeholder=" "
+                required
+              />
               <label>Search</label>
             </div>
           </form>
@@ -143,29 +162,29 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
-import { useStore } from 'vuex';
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
-const location = useRoute();
+const location = useRoute()
 
-const homeCart = ref([]);
-const store = useStore();
-const windowWidth = ref(window.innerWidth);
-const isModalVisible = ref(false);
-const isSearchOpen = ref(false);
+const homeCart = ref([])
+const store = useStore()
+const windowWidth = ref(window.innerWidth)
+const isModalVisible = ref(false)
+const isSearchOpen = ref(false)
 
 // console.log("State => ", store.state);
 
 // Custom nextTick function to capture refs
-const refs = ref({});
+const refs = ref({})
 // console.log(refs);
 const customNextTick = (callback) => {
   refs.value = {
     ...refs.value,
     ...refs,
-  };
-  return callback();
-};
+  }
+  return callback()
+}
 
 // Compute the total price based on the homeCart
 const totalPrice = computed(() => {
@@ -173,45 +192,43 @@ const totalPrice = computed(() => {
     .reduce(
       (total, product) =>
         total +
-        Math.floor(
-          product.price - (product.price * product.discount) / 100
-        ) *
-        product.count,
-      0
+        Math.floor(product.price - (product.price * product.discount) / 100) *
+          product.count,
+      0,
     )
-    .toFixed(2)}`;
-});
+    .toFixed(2)}`
+})
 
 // Event handler for window resize
 const handleResize = () => {
   // handle resize logic
-  windowWidth.value = window.innerWidth;
-};
+  windowWidth.value = window.innerWidth
+}
 
 // Toggle cart visibility
 const toggleCart = () => {
-  homeCart.value = store.state.cart;
+  homeCart.value = store.state.cart
   isModalVisible.value = !isModalVisible.value
-};
+}
 
 // Toggle search visibility
 const toggleSearch = () => {
-  isSearchOpen.value = !isSearchOpen.value;
-};
+  isSearchOpen.value = !isSearchOpen.value
+}
 
 // Save cart to local storage
 const setCartCountToLS = () => {
-  localStorage.setItem('cart', JSON.stringify(homeCart.value));
-};
+  localStorage.setItem('cart', JSON.stringify(homeCart.value))
+}
 
 // Delete an item from the cart
 const deleteItem = (i) => {
   if (window.confirm('Are you sure you want to delete this product?')) {
-    homeCart.value.splice(i, 1);
-    setCartCountToLS();
-    store.commit('totalCart');
+    homeCart.value.splice(i, 1)
+    setCartCountToLS()
+    store.commit('totalCart')
   }
-};
+}
 
 // navigate to product page
 const navigateToProduct = () => {
@@ -221,19 +238,18 @@ const navigateToProduct = () => {
       id: product.value.id,
       description: product.value.description,
     },
-  });
-  toggleCart();
-};
+  })
+  toggleCart()
+}
 
 onMounted(() => {
-  window.addEventListener('resize', handleResize);
-});
+  window.addEventListener('resize', handleResize)
+})
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', handleResize);
-});
+  window.removeEventListener('resize', handleResize)
+})
 </script>
-
 
 <style lang="scss" scoped>
 .links {
@@ -248,12 +264,12 @@ onBeforeUnmount(() => {
   .router-link-exact-active {
     color: var(--yellow);
 
-    +span {
+    + span {
       color: var(--yellow);
     }
   }
 
-  >div {
+  > div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -299,7 +315,7 @@ onBeforeUnmount(() => {
       & {
         padding: 0 7px;
 
-        >span {
+        > span {
           display: none;
         }
 
@@ -320,7 +336,7 @@ onBeforeUnmount(() => {
         display: none;
       }
 
-      >div {
+      > div {
         padding: 0 7px;
 
         i {
@@ -595,7 +611,7 @@ onBeforeUnmount(() => {
         z-index: 9;
         border-top: 1px solid var(--yellow);
 
-        >div {
+        > div {
           margin-bottom: 20px;
         }
 

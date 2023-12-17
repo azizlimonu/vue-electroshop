@@ -30,9 +30,19 @@
           <!-- responsive menu -->
           <div class="menu-links">
             <!-- Bind class overlay with add show -->
-            <div :class="['overlay', isMenuOpen ? 'show' : '']" @click=" toggleMenu()"></div>
+            <div
+              :class="['overlay', isMenuOpen ? 'show' : '']"
+              @click="toggleMenu()"
+            ></div>
 
-            <div :class="['home-links', 'd-flex', 'flex-column', isMenuOpen ? 'show' : '']">
+            <div
+              :class="[
+                'home-links',
+                'd-flex',
+                'flex-column',
+                isMenuOpen ? 'show' : '',
+              ]"
+            >
               <ul style="flex: 1">
                 <div class="header">
                   <div class="img">
@@ -43,9 +53,7 @@
                   </span>
                 </div>
                 <li>
-                  <router-link @click="toggleMenu()" to="/">
-                    HOME
-                  </router-link>
+                  <router-link @click="toggleMenu()" to="/"> HOME </router-link>
                 </li>
                 <li>
                   <router-link @click="toggleMenu()" to="/catalog">
@@ -68,17 +76,28 @@
                   </router-link>
                 </li>
                 <li>
-                  <router-link @click="toggleMenu()" to="/compare" class="hide-link">
+                  <router-link
+                    @click="toggleMenu()"
+                    to="/compare"
+                    class="hide-link"
+                  >
                     COMPARE ({{ store.state.compareTotal }})
                   </router-link>
                 </li>
                 <li>
-                  <router-link @click="toggleMenu()" to="/wishlist" class="hide-link">
+                  <router-link
+                    @click="toggleMenu()"
+                    to="/wishlist"
+                    class="hide-link"
+                  >
                     WISHLIST ({{ store.state.favTotal }})
                   </router-link>
                 </li>
               </ul>
-              <div class="contact-me" style="background-color: #223040; color: white">
+              <div
+                class="contact-me"
+                style="background-color: #223040; color: white"
+              >
                 <a href="https://www.facebook.com" target="_blank">
                   <i class="fa-brands fa-facebook"></i>
                 </a>
@@ -104,19 +123,18 @@
 </template>
 
 <script setup>
-import { useStore } from 'vuex';
-import { useRoute } from 'vue-router';
-import { ref } from 'vue';
+import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
+import { ref } from 'vue'
 
-const isMenuOpen = ref(false);
+const isMenuOpen = ref(false)
 
-const location = useRoute();
-const store = useStore();
+const location = useRoute()
+const store = useStore()
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
-
 </script>
 
 <style lang="scss" scoped>

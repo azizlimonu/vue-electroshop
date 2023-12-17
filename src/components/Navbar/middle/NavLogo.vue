@@ -1,12 +1,12 @@
 <template>
   <div class="logo">
-    <router-link to="/"><img src='../../../assets/logo.webp' alt="Logo" /></router-link>
+    <router-link to="/"
+      ><img src="../../../assets/logo.webp" alt="Logo"
+    /></router-link>
   </div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .logo {

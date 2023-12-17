@@ -1,44 +1,84 @@
 <template>
   <div class="banners">
     <!-- Main Banner -->
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true"
-      data-interval="5000">
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-touch="true"
+      data-interval="5000"
+    >
       <div class="carousel-indicators">
-        <button v-for="(item, index) in mainBanners" :key="index" type="button"
-          :data-bs-target="'#carouselExampleCaptions'" :data-bs-slide-to="index" :class="{ active: index === 0 }"
-          :aria-current="index === 0" :aria-label="'Slide ' + (index + 1)"></button>
+        <button
+          v-for="(item, index) in mainBanners"
+          :key="index"
+          type="button"
+          :data-bs-target="'#carouselExampleCaptions'"
+          :data-bs-slide-to="index"
+          :class="{ active: index === 0 }"
+          :aria-current="index === 0"
+          :aria-label="'Slide ' + (index + 1)"
+        ></button>
       </div>
       <div class="carousel-inner">
-        <div v-for="(item, index) in mainBanners" :key="index" class="carousel-item" :class="{ active: index === 0 }">
+        <div
+          v-for="(item, index) in mainBanners"
+          :key="index"
+          class="carousel-item"
+          :class="{ active: index === 0 }"
+        >
           <img :src="getImageUrl(item.image)" class="d-block w-100" alt="..." />
-          <div :class="'carousel-caption animate__animated animate__fadeInDown ' + item.captionColor">
+          <div
+            :class="
+              'carousel-caption animate__animated animate__fadeInDown ' +
+              item.captionColor
+            "
+          >
             <h5>{{ item.offer }}</h5>
             <h1>{{ item.title }}</h1>
             <button>{{ item.buttonText }}</button>
           </div>
         </div>
       </div>
-      <button class="carousel-control-prev hover-btn" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev">
+      <button
+        class="carousel-control-prev hover-btn"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <button class="carousel-control-next hover-btn" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next">
+      <button
+        class="carousel-control-next hover-btn"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
         <i class="fa-solid fa-chevron-right"></i>
       </button>
     </div>
     <!-- Two Banners -->
     <div class="extra-banner">
       <div class="row">
-        <div v-for="(item, index) in extraBanners" :key="index" class="col-md-6">
+        <div
+          v-for="(item, index) in extraBanners"
+          :key="index"
+          class="col-md-6"
+        >
           <div class="extra">
             <div class="extra-inner">
               <div class="extra-item">
-                <img :src="getImageUrl(item.image)" class="d-block w-100" alt="Sale!" />
+                <img
+                  :src="getImageUrl(item.image)"
+                  class="d-block w-100"
+                  alt="Sale!"
+                />
                 <div :class="'extra-caption ' + item.captionColor">
                   <h5>{{ item.offer }}</h5>
                   <h1>{{ item.title }}</h1>
-                  <button :style="{ color: item.buttonColor }">{{ item.buttonText }}</button>
+                  <button :style="{ color: item.buttonColor }">
+                    {{ item.buttonText }}
+                  </button>
                 </div>
               </div>
             </div>
@@ -52,39 +92,39 @@
 <script setup>
 const mainBanners = [
   {
-    image: "main-banner1.png",
-    captionColor: "color: #223040",
-    offer: "Limited Offer 50% Off",
-    title: "Playing Video Games",
-    buttonText: "SHOP NOW",
+    image: 'main-banner1.png',
+    captionColor: 'color: #223040',
+    offer: 'Limited Offer 50% Off',
+    title: 'Playing Video Games',
+    buttonText: 'SHOP NOW',
   },
   {
-    image: "main-banner2.png",
-    captionColor: "color: #223040",
-    offer: "Limited Offer 50% Off",
-    title: "New Wireless Speaker",
-    buttonText: "SHOP NOW",
+    image: 'main-banner2.png',
+    captionColor: 'color: #223040',
+    offer: 'Limited Offer 50% Off',
+    title: 'New Wireless Speaker',
+    buttonText: 'SHOP NOW',
   },
-];
+]
 
 const extraBanners = [
   {
-    image: "extra-banner1.png",
-    captionColor: "color: #223040",
-    offer: "Extra 30% Off",
-    title: "Prolet designed for Airpods",
-    buttonColor: "#223040",
-    buttonText: "SHOP NOW",
+    image: 'extra-banner1.png',
+    captionColor: 'color: #223040',
+    offer: 'Extra 30% Off',
+    title: 'Prolet designed for Airpods',
+    buttonColor: '#223040',
+    buttonText: 'SHOP NOW',
   },
   {
-    image: "extra-banner2.png",
-    captionColor: "color: white",
-    offer: "Extra 30% Off",
-    title: "EasySkinz XBOX Series X",
-    buttonColor: "white",
-    buttonText: "SHOP NOW",
+    image: 'extra-banner2.png',
+    captionColor: 'color: white',
+    offer: 'Extra 30% Off',
+    title: 'EasySkinz XBOX Series X',
+    buttonColor: 'white',
+    buttonText: 'SHOP NOW',
   },
-];
+]
 
 const getImageUrl = (name) => {
   return new URL(`../../assets/${name}`, import.meta.url).href
@@ -113,7 +153,7 @@ const getImageUrl = (name) => {
       transform: translateY(-50%);
       text-align: left;
       padding: 0;
-      font-family: "jost", sans-serif;
+      font-family: 'jost', sans-serif;
       top: 20%;
       animation-delay: 0.3s;
 
@@ -298,7 +338,7 @@ const getImageUrl = (name) => {
         left: 53%;
         text-align: left;
         padding: 0;
-        font-family: "jost", sans-serif;
+        font-family: 'jost', sans-serif;
         top: -50%;
         animation-delay: 0.3s;
 

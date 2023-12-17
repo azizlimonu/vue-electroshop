@@ -12,29 +12,28 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue'
 import NavbarView from './components/layout/NavbarView.vue'
 import LoadingOverlay from './components/layout/LoadingOverlay.vue'
 import ScrollToTop from './components/layout/ScrollToTop.vue'
 import FooterView from './components/layout/FooterView.vue'
-import router from './router';
+import router from './router'
 
-const isLoading = ref(false);
+const isLoading = ref(false)
 
 const startLoading = () => {
-  isLoading.value = true;
+  isLoading.value = true
   setTimeout(() => {
     isLoading.value = false
   }, 500)
-};
+}
 
 onMounted(() => {
   router.beforeEach((to, from, next) => {
-    startLoading();
-    next();
-  });
-});
-
+    startLoading()
+    next()
+  })
+})
 </script>
 
 <style lang="scss">
@@ -74,8 +73,8 @@ onMounted(() => {
 }
 
 body {
-  font-family: "Jost", sans-serif;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Jost', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   position: relative;
 }
@@ -121,7 +120,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -131,10 +130,10 @@ textarea {
 }
 
 // Remove Icon 'X' From Search input
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
 </style>

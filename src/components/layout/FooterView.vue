@@ -7,9 +7,9 @@
 </template>
 
 <script setup>
-import FooterTop from '../Footer/FooterTop.vue';
-import FooterMid from '../Footer/FooterMid.vue';
-import FooterBot from '../Footer/FooterBot.vue';
+import FooterTop from '../Footer/FooterTop.vue'
+import FooterMid from '../Footer/FooterMid.vue'
+import FooterBot from '../Footer/FooterBot.vue'
 </script>
 
 <style lang="scss" scoped>

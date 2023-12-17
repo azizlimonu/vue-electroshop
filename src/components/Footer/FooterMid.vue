@@ -13,7 +13,12 @@
           <span style="display: block">{{ phoneNumber }}</span>
 
           <div class="social">
-            <a v-for="(link, index) in socialLinks" :key="index" :href="link.url" target="_blank">
+            <a
+              v-for="(link, index) in socialLinks"
+              :key="index"
+              :href="link.url"
+              target="_blank"
+            >
               <i :class="link.icon"></i>
             </a>
           </div>
@@ -32,10 +37,12 @@
           <h2>{{ footer.title }}</h2>
           <ul>
             <li v-for="(path, index) in footer.links" :key="index">
-              <router-link :to="{
-                name: 'footer-link',
-                params: { name: path.name },
-              }">
+              <router-link
+                :to="{
+                  name: 'footer-link',
+                  params: { name: path.name },
+                }"
+              >
                 {{ path.name }}
               </router-link>
             </li>
@@ -47,50 +54,48 @@
 </template>
 
 <script setup>
-const contactAddress = "MNC Tower - Metro St - Jakarta - Indonesia";
-const emailAddress = "azizlimonu@gmail.com";
-const phoneNumber = "+62 812-3456-7890";
+const contactAddress = 'MNC Tower - Metro St - Jakarta - Indonesia'
+const emailAddress = 'azizlimonu@gmail.com'
+const phoneNumber = '+62 812-3456-7890'
 
 const socialLinks = [
-  { icon: "fa-brands fa-facebook", url: "/" },
-  { icon: "fa-brands fa-github", url: "https://github.com/azizlimonu" },
-  { icon: "fa-brands fa-linkedin", url: "https://www.linkedin.com" },
-];
+  { icon: 'fa-brands fa-facebook', url: '/' },
+  { icon: 'fa-brands fa-github', url: 'https://github.com/azizlimonu' },
+  { icon: 'fa-brands fa-linkedin', url: 'https://www.linkedin.com' },
+]
 
 const helpLinks = [
-  { to: "/contact", label: "Contact Us" },
-  { to: "/catalog", label: "Catalog" },
-  { to: "/my-cart", label: "Cart" },
-  { to: "/blog", label: "Blog" },
-  { to: "/", label: "Home" },
-];
+  { to: '/contact', label: 'Contact Us' },
+  { to: '/catalog', label: 'Catalog' },
+  { to: '/my-cart', label: 'Cart' },
+  { to: '/blog', label: 'Blog' },
+  { to: '/', label: 'Home' },
+]
 
 const footerLinks = [
   {
     id: 1,
-    title: "Informations",
+    title: 'Informations',
     links: [
-      { id: 1, name: "Policy-For-Buyers" },
-      { id: 2, name: "Policy-For-Sellers" },
-      { id: 3, name: "Terms-And-Conditions" },
-      { id: 4, name: "Shipping-&-Refund" },
-      { id: 5, name: "Wholesale-Policy" },
+      { id: 1, name: 'Policy-For-Buyers' },
+      { id: 2, name: 'Policy-For-Sellers' },
+      { id: 3, name: 'Terms-And-Conditions' },
+      { id: 4, name: 'Shipping-&-Refund' },
+      { id: 5, name: 'Wholesale-Policy' },
     ],
   },
   {
     id: 2,
-    title: "About us",
+    title: 'About us',
     links: [
-      { id: 6, name: "About-us" },
-      { id: 7, name: "Delivery-Information" },
-      { id: 8, name: "Privacy-Policy" },
-      { id: 9, name: "Terms-and-Conditions" },
-      { id: 10, name: "Search" },
+      { id: 6, name: 'About-us' },
+      { id: 7, name: 'Delivery-Information' },
+      { id: 8, name: 'Privacy-Policy' },
+      { id: 9, name: 'Terms-and-Conditions' },
+      { id: 10, name: 'Search' },
     ],
   },
-];
-
-
+]
 </script>
 
 <style lang="scss" scoped>
@@ -163,7 +168,7 @@ const footerLinks = [
 
               /* Icon */
               &::after {
-                content: "\276F";
+                content: '\276F';
                 width: 1em;
                 height: 1em;
                 text-align: center;
@@ -196,13 +201,13 @@ const footerLinks = [
             }
 
             input:checked {
-              +.tab-label {
+              + .tab-label {
                 &::after {
                   transform: rotate(90deg);
                 }
               }
 
-              ~.tab-content {
+              ~ .tab-content {
                 max-height: 100vh;
                 background: var(--bg-color);
               }

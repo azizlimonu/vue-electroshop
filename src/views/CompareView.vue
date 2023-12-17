@@ -1,11 +1,7 @@
 <template>
-  <div>
-    Compare
-  </div>
+  <div>Compare</div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>

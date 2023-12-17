@@ -1,11 +1,7 @@
 <template>
-  <div>
-    Wishlist
-  </div>
+  <div>Wishlist</div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>

@@ -6,8 +6,7 @@
     </div>
   </div>
 </template>
-<script setup>
-</script>
+<script setup></script>
 <style lang="scss" scoped>
 .footer-bottom {
   padding-top: 20px;

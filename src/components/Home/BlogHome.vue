@@ -1,11 +1,7 @@
 <template>
-  <div>
-    Home Blog
-  </div>
+  <div>Home Blog</div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>

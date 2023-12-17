@@ -1,11 +1,7 @@
 <template>
-  <div>
-    Second Banner
-  </div>
+  <div>Second Banner</div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>

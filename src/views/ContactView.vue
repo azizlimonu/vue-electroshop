@@ -1,11 +1,7 @@
 <template>
-  <div>
-    Contact
-  </div>
+  <div>Contact</div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>

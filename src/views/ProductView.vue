@@ -1,11 +1,7 @@
 <template>
-  <div>
-    Product
-  </div>
+  <div>Product</div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>
