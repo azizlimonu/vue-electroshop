@@ -23,12 +23,12 @@
           <div class="img-holder flex-center">
             <div class="imgs" style="cursor: pointer">
               <img
-                :src="product.firstImg"
+                :src="getImageUrl(product.firstImg)"
                 class="card-img-top first"
                 alt="Product Image"
               />
               <img
-                :src="product.secondImg"
+                :src="getImageUrl(product.secondImg)"
                 class="card-img-top second"
                 alt="Product Image"
               />
@@ -153,6 +153,8 @@ import { useStore } from 'vuex'
 
 const modules = [Navigation]
 const props = defineProps(['products', 'text'])
+const production = ref(props.products)
+console.log('PRODUCTION', production)
 
 const windowWidth = ref(window.innerWidth)
 
@@ -267,7 +269,9 @@ const closeModalAndNavigate = (route) => {
   router.push(route)
 }
 
-// Add other methods as needed
+const getImageUrl = (name) => {
+  return new URL(`../../assets/Products/${name}`, import.meta.url).href
+}
 
 const productIcons = () => {
   store.state.allProducts.forEach((product) => {
