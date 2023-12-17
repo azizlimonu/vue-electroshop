@@ -208,7 +208,7 @@ onUnmounted(() => {
       }
     }
     img {
-      max-width: 100%;
+      min-width: 100%;
       transition: 0.5s;
       max-height: 210px;
     }
