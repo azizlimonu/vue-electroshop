@@ -153,8 +153,8 @@ import { useStore } from 'vuex'
 
 const modules = [Navigation]
 const props = defineProps(['products', 'text'])
-const production = ref(props.products)
-console.log('PRODUCTION', production)
+// const production = ref(props.products)
+// console.log('PRODUCTION', production)
 
 const windowWidth = ref(window.innerWidth)
 

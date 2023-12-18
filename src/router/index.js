@@ -52,7 +52,7 @@ const routes = [
     },
   }, {
     name: "cart",
-    path: "/My-Cart",
+    path: "/my-Cart",
     component: CartView,
     meta: {
       title: "ElectroShop - My Cart",
