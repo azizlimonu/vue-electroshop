@@ -358,7 +358,7 @@ export default createStore({
       {
         id: 1,
         name: "Security Priority",
-        img: import("../assets/OurBlog/blog-1.png"),
+        img: "blog-1.png",
         date: "05 MAY, 2023",
         title: "Security Must Be Top Priority in Bringing...",
         description:
@@ -369,7 +369,7 @@ export default createStore({
       {
         id: 2,
         name: "Remote Collaboration",
-        img: import("../assets/OurBlog/blog-2.png"),
+        img: "blog-2.png",
         date: "12 NOV, 2023",
         title: "Remote Collaboration, Digital Twins...",
         description: "Turpis at eleifend ps mi elit Aenean porta ac sed...",
@@ -379,7 +379,7 @@ export default createStore({
       {
         id: 3,
         name: "Our Kit Closeup",
-        img: import("../assets/OurBlog/blog-3.png"),
+        img: "blog-3.png",
         date: "10 NOV, 2023",
         title: "Our Kit Close-up video series highlights...",
         description: "Donec tellus Nulla lorem Nullam elit id ut elit...",
@@ -389,7 +389,7 @@ export default createStore({
       {
         id: 4,
         name: "Wireless Technologies",
-        img: import("../assets/OurBlog/blog-4.png"),
+        img: "blog-4.png",
         date: "27 NOV, 2023",
         title: "There’s another wireless technology...",
         description: "long-range applications There's another wireless...",
@@ -399,7 +399,7 @@ export default createStore({
       {
         id: 5,
         name: "Complexities of Electronics",
-        img: import("../assets/OurBlog/blog-5.png"),
+        img: "blog-5.png",
         date: "04 DEC, 2023",
         title: "The Complexities of Electronic Design...",
         description: "Mi vitae magnis Fusce laoreet nibh felis porttitor...",
@@ -408,7 +408,7 @@ export default createStore({
       {
         id: 6,
         name: "Embedded Forecast",
-        img: import("../assets/OurBlog/blog-6.png"),
+        img: "blog-6.png",
         date: "18 DEC, 2023",
         title: "Embedded Forecast, Suspect Software...",
         description: "Mi vitae magnis Fusce laoreet nibh felis porttitor...",
