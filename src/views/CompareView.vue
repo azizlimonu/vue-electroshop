@@ -94,11 +94,12 @@ import { useRouter } from 'vue-router'
 
 const store = useStore()
 
+const router = useRouter()
 const compare = ref([])
 
 const navigateToProduct = (product) => {
   const { id, description } = product
-  const router = useRouter()
+  console.log(`router push product/${id}/${description}`)
   router.push({ name: 'product', params: { id, description } })
 }
 
