@@ -77,7 +77,10 @@
           <div class="item" v-for="(product, i) in homeCart" :key="product.id">
             <div class="product-img">
               <a @click="navigateToProduct()">
-                <img :src="product.firstImg" :alt="product.title" />
+                <img
+                  :src="getImageUrl(product.firstImg)"
+                  :alt="product.title"
+                />
               </a>
             </div>
 
@@ -240,6 +243,10 @@ const navigateToProduct = () => {
     },
   })
   toggleCart()
+}
+
+const getImageUrl = (name) => {
+  return new URL(`../../../assets/Products/${name}`, import.meta.url).href
 }
 
 onMounted(() => {
