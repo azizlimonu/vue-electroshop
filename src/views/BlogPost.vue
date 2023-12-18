@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -58,17 +58,13 @@ const route = useRoute()
 const getImageUrl = (name) => {
   return new URL(`../assets/OurBlog/${name}`, import.meta.url).href
 }
+const updateBlog = () => {
+  myBlog.value = state.ourBlog.filter((e) => e.id == route.params.id)
+}
 
 onMounted(() => {
-  myBlog.value = state.ourBlog.filter((e) => e.id == route.params.id)
+  updateBlog()
 })
-
-watch(
-  () => route.params.id,
-  (newVal) => {
-    myBlog.value = state.ourBlog.filter((e) => e.id == newVal)
-  },
-)
 </script>
 
 <style lang="scss" scoped>
