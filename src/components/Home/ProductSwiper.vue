@@ -78,18 +78,7 @@
               <i v-if="product.compare" class="fa-solid fa-check"></i>
             </div>
             <div class="view">
-              <i
-                @click="
-                  router.push({
-                    name: 'product',
-                    params: {
-                      id: product.id,
-                      description: product.description,
-                    },
-                  })
-                "
-                class="fa-regular fa-eye"
-              >
+              <i @click="navigateToProduct(product)" class="fa-regular fa-eye">
               </i>
             </div>
           </div>
@@ -150,7 +139,8 @@ import { Navigation } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { useStore } from 'vuex'
-
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const modules = [Navigation]
 const props = defineProps(['products', 'text'])
 // const production = ref(props.products)
@@ -160,6 +150,12 @@ const windowWidth = ref(window.innerWidth)
 
 const handleResize = () => {
   windowWidth.value = window.innerWidth
+}
+
+const navigateToProduct = (product) => {
+  const { id, description } = product
+  // console.log(`router push product/${id}/${description}`)
+  router.push({ name: 'product', params: { id, description } })
 }
 
 onMounted(() => {

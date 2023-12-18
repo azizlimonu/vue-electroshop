@@ -60,7 +60,7 @@ import { useStore } from 'vuex'
 const store = useStore()
 
 const ourBlog = ref(store.state.ourBlog)
-console.log('our blog', ourBlog)
+// console.log('our blog', ourBlog)
 
 const getImageUrl = (name) => {
   return new URL(`../../assets/OurBlog/${name}`, import.meta.url).href

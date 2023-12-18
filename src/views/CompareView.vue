@@ -99,7 +99,7 @@ const compare = ref([])
 
 const navigateToProduct = (product) => {
   const { id, description } = product
-  console.log(`router push product/${id}/${description}`)
+  // console.log(`router push product/${id}/${description}`)
   router.push({ name: 'product', params: { id, description } })
 }
 
